@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CodeCosmos</title>
+    <link rel="icon" type="image/jpeg" href="img/cc-icon.jpg">
+    <link rel="stylesheet" href="static/pure/pure-min.css">
+    <link rel="stylesheet" href="static/codemirror/lib/codemirror.css">
+    <script src="static/webfontloader/webfont.js"></script>
+    <script src="static/underscore/underscore.js"></script>
+    <script src="static/jquery/jquery.js"></script>
+    <script src="static/angular/angular.js"></script>
+    <script src="static/codemirror/lib/codemirror.js"></script>
+    <script src="static/codemirror/mode/javascript/javascript.js"></script>
+    <script src="static/jsziptools/jsziptools.min.js"></script>
+    <script src="static/jshint/jshint-2.1.4.js"></script>
+    <script src="static/pouchdb/pouchdb-nightly.js"></script>
+
+    <link rel="stylesheet" href="static/codemirror/addon/lint/lint.css">
+    <script src="static/codemirror/addon/lint/lint.js"></script>
+    <script src="js/javascript-lint.js"></script>
+
+    <link rel="stylesheet" href="static/codemirror/addon/hint/show-hint.css">
+    <script src="static/codemirror/addon/hint/show-hint.js"></script>
+    <script src="static/codemirror/addon/hint/javascript-hint.js"></script>
+
+    <script src="static/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="js/persistence.js"></script>
+    <script src="js/editor.js"></script>
+
+    <style type="text/css">
+      body { margin: 0; padding: 0; height: 100%; }
+      .CodeMirror { border: 1px solid black; height: 100%; font-family: "SourceCodeProRegular"; font-size: 80%; box-sizing: border-box; }
+      div.CodeMirror span.CodeMirror-matchingbracket { background-color: #00ffff; color: #000; }
+      div.CodeMirror .sandbox-error { background-color: rgba(255, 0, 0, 0.1); }
+      div.CodeMirror .sandbox-error-first { background-color: rgba(255, 0, 0, 0.15); }
+      #main-menu { background-color: #eee; height: 2.5em; }
+      #main-menu ul { font-family: "UbuntuRegular"; }
+      #main-menu .pure-menu-heading { font-family: "KontrapunktBold"; text-transform: none; font-size: 120%; }
+      #main-menu button.tool { padding: 8px 3px; color: #333333; border: none; background-color: transparent; }
+      #main-menu .right-menu { 
+      float: right;
+      }
+      #main-menu .right-menu i {
+      vertical-align: middle;
+      padding: 5px 3px;
+      line-height: 1.5em;
+      font-size: 100%;
+      }
+      #main-container .panel {
+      z-index: 10000;
+      background-color: #eee;
+      border: 1px solid black;
+      box-sizing: border-box;
+      position: absolute;
+      top: 2.5em;
+      height: 2em;
+      width: 50%;
+      display: table;
+      }
+      #main-container .panel .content { display: table-cell; vertical-align:
+      middle; height: 100%; width: 100%; line-height: 1.5em;
+      padding-left: 8px; }
+      #main-container .panel .content .close-button { float: right; margin-right: 1px; }
+
+      @-webkit-keyframes loading-pulse {
+        from { opacity: 0.25; }
+        to { opacity: 1.0; }
+      }
+      @keyframes loading-pulse {
+        from { opacity: 0.25; }
+        to { opacity: 1.0; }
+      }
+      #loading {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        width: 100%;
+      }
+      #loading div {
+        display: table;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+      }
+      #loading h1 {
+        height: 100%;
+        width: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        -webkit-animation-name: loading-pulse;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-iteration-count: infinite;
+        animation-name: loading-pulse;
+        animation-duration: 2s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+
+      #container.show { display: block; }
+      #container { position:absolute; top: 2.5em; bottom: 0px; width: 100%; display: none; }
+      #code { position:absolute; width: 50%; height: 100%; }
+      #temporary { position:absolute; }
+      #display { position:absolute; width: 50%; left: 50%; height:100%; overflow: hidden; }
+      .hide { display: none; }
+      #main-container .hide { display: none; }
+      #errors { position: absolute; left: 0; right: 0;
+      background-color: #ffffff; border: 1px solid black; display:
+      none; padding-left: 1em; padding-right: 1em;}
+      #errors .icon-ambulance { color: red; text-shadow: 1px 1px #cc0000; }
+      #errors.show { display: block; }
+      #errors section { margin-bottom: 1em; }
+      #errors section i { text-align: center; }
+      #errors h1, #errors h2 { color: #999999; }
+      #errors .message { }
+      #errors .explanation {}
+      #errors ul.errors { padding-left: 0; }
+      #errors ul.errors li { display: block; cursor: pointer; }
+      #errors ul.errors li span { text-decoration: underline; }
+      #sandbox { position: absolute; background-color: #ccc; border: 1px solid black; width: 100%; height: 100%; box-sizing: border-box; }
+    </style>
+  </head>
+  <body>
+    <div id="main-container" ng-controller="MenuCtrl">
+      <div id="main-menu" class="pure-menu pure-menu-open pure-menu-horizontal">
+        <a href="#" class="pure-menu-heading">CodeCosmos</a>
+        <ul>
+          <li class="pure-menu">
+            <input type="text" name="filename" placeholder="{{ placeholder }}" ng-model="filename" />
+          </li>
+          <li class="pure-menu">
+            <select id="menu-files" ng-model="loaded_file" ng-change="loadFile()">
+              <option value="">Load&hellip;</option>
+              <optgroup ng-repeat="group in groups" label="{{group.name}}">
+                <option
+                   ng-repeat="file in group.files"
+                   ng-disabled="isFileCurrent(file)"
+                   value="{{ toJson(file) }}">{{file.name}}</option>
+              </optgroup>
+            </select>
+          </li>
+          <li ng-class="{hide: running}"><button class="icon-play icon-large tool" title="Run this code" ng-click="toggleRunning()"></button></li>
+          <li ng-class="{hide: !running}"><button class="icon-pause icon-large tool" title="Pause this code" ng-click="toggleRunning()"></button></li>
+          <li><button class="icon-copy icon-large tool" title="Make a copy of this code" ng-click="copyDoc(); focusName()"></button></li>
+          <li><button class="icon-share icon-large tool" title="Publish this code" ng-click="publishDoc()"></button></li>
+          <li><button class="icon-download-alt icon-large tool" title="Download a backup copy of all the code in this workspace" ng-click="downloadBackup()"></button></li>
+        </ul>
+        <ul class="right-menu">
+          <li>
+            <button
+               ng-show="faceState == SMILE"
+               class="icon-smile icon-large tool"
+               title="Looks like everything is running ok!"
+               ng-click="faceClick()"></button>
+            <button
+               ng-show="faceState == FROWN"
+               class="icon-frown icon-large tool"
+               title="Time to figure out what caused that error&hellip;"
+               ng-click="faceClick()"></button>
+            <button
+               ng-show="faceState == MEH"
+               class="icon-meh icon-large tool"
+               title="This code won't run, maybe there's a missing semicolon?"
+               ng-click="faceClick()"></button>
+          </li>
+          <li><button class="icon-trash icon-large tool" title="Throw away this code" ng-click="trashDoc()"></button></li>
+        </ul>
+      </div>
+      <div id="share-panel" ng-class="{hide: !displaySharePanel}"
+           class="panel hide">
+        <div class="content">
+          Published to: <a href="{{ shareUrl }}" title="Right-click and Copy Link Address" target="_blank">{{ shareUrl }}</a>
+          <button class="close-button icon-large icon-remove" ng-click="displaySharePanel = false"></button>
+        </div>
+      </div>
+      <div id="backup-panel" ng-class="{hide: !displayBackupPanel}"
+           class="panel hide">
+        <div class="content">
+          <span ng-show="backupPercent < 1">{{ 100 * backupPercent | number:0 }}% complete</span>
+          <span ng-show="backupPercent >= 1">Click to download: <a href="#" download-url="backupUrl" download="codecosmos-backup.zip">codecosmos-backup.zip</a></span>
+          <button class="close-button icon-large icon-remove" ng-click="displayBackupPanel = false"></button>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <section id="code"><textarea id="code-js"></textarea></section>
+      <section id="display">
+        <div id="sandbox-ctr">
+          <iframe id="sandbox" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+        <div id="errors" ng-controller="ErrorCtrl" ng-class="{show: errors.length || lintErrors.length}">
+          <div ng-show="lintErrors.length > 0">
+            <h1 class="name"><i class="icon-meh"></i> Syntax Issues</h1>
+            <section class="explanation">
+              <i class="icon-lightbulb icon-fixed-width"></i>
+              JavaScript doesn't know how to interpret your code.
+              Mouse over the icons on the left to see more
+              detailed suggestions about how to make your code look
+              like valid JavaScript.
+            </section>
+            <section class="message">
+              <i class="icon-magic icon-fixed-width"></i>Try fixing the first error before
+                looking at the others. There's a chance this one problem
+                is the root cause of all the others!
+            </section>
+          </div>
+          <div ng-show="errors.length > 0">
+            <h1 class="name"><i class="icon-ambulance"></i> {{name}}</h1>
+            <section class="explanation">
+              <i class="icon-lightbulb icon-fixed-width"></i> {{explanation}}
+            </section>
+            <section class="message">
+              <i class="icon-bug icon-fixed-width"></i> {{message}}
+            </section>
+          </div>
+          <h2>Try looking for the problem here:</h2>
+          <ul class="errors">
+            <li class="icon-arrow-right" ng-repeat="err in errors">
+              <span>{{friendlyName(err.name)}} (line {{err.line}})</span>
+            </li>
+            <li class="icon-arrow-right" ng-repeat="err in lintErrors">
+              <span>Line {{err.from.line + 1}}
+                (<ng-pluralize count="err.count" when="{'other': '{} problems', 'one': '{{err.message}}'}"></ng-pluralize>)
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div id="temporary"></div>
+      </section>
+    </div>
+    <div id="loading">
+      <div><h1>Loading&hellip;</h1></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "font-awesome",
+  "description": "Font Awesome, the iconic font designed for use with Twitter Bootstrap.",
+  "version": "3.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/components/font-awesome.git"
+  },
+  "main": "css/font-awesome.css",
+  "gitHead": "8b0af3318045c65a1fe27745bf2f7f5353746820",
+  "readme": "Font Awesome\n============\n\nShim repository for Font Awesome.\n\nThe full suite of pictographic icons, examples, and documentation can be found at:\nhttp://fortawesome.github.com/Font-Awesome/\n\n\nPackage Managers\n----------------\n\n* [Bower](http://bower.io): `components-font-awesome`\n* [Component](https://github.com/component/component): `components/font-awesome`\n* [Composer](http://packagist.org/packages/components/font-awesome): `components/font-awesome`\n\n\nLicense\n-------\n\n- The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL\n- Font Awesome CSS, LESS, and SASS files are licensed under the MIT License - http://opensource.org/licenses/mit-license.html\n- The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/\n- Attribution is no longer required in Font Awesome 3.0, but much appreciated: \"Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome\"\n",
+  "readmeFilename": "README.md",
+  "_id": "components-font-awesome@3.2.0"
+}
