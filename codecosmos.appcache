@@ -1,17 +1,24 @@
 CACHE MANIFEST
-# CHANGE
+# This is for dist only
 NETWORK:
 *
 
 
-# [res.local] Fri Jul 05 2013 15:00:37 GMT-0700 (PDT)
+# [res.local] Sat Jul 06 2013 11:40:51 GMT-0700 (PDT)
 CACHE:
 index.html
 sandbox.html
 css/editor.css
 data/01-formandcode.js
+data/basic-drawing.js
 data/bootstrap.json
+data/strings.js
+img/280046main_CassAcomposite_bkg.jpg
 img/cc-icon.jpg
+js/AppCtrl.js
+js/CodeCtrl.js
+js/LoginCtrl.js
+js/MenuCtrl.js
 js/editor.js
 js/javascript-lint.js
 js/persistence.js
