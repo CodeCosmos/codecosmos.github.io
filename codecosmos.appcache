@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Sat Jul 06 2013 16:18:23 GMT-0700 (PDT)
+# [res.local] Sat Jul 06 2013 16:57:05 GMT-0700 (PDT)
 CACHE:
 index.html
 sandbox.html
@@ -15,6 +15,8 @@ data/bootstrap.json
 data/strings.js
 img/280046main_CassAcomposite_bkg.jpg
 img/cc-icon.jpg
+img/hs-2009-05-a-full_bkg.jpg
+img/hs-2010-13-a-full_bkg.jpg
 js/AppCtrl.js
 js/CodeCtrl.js
 js/LoginCtrl.js
