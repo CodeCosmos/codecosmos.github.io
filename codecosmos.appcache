@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Sat Jul 06 2013 17:15:51 GMT-0700 (PDT)
+# [res.local] Sun Jul 07 2013 05:05:12 GMT-0700 (PDT)
 CACHE:
 index.html
 sandbox.html
@@ -22,6 +22,7 @@ js/CodeCtrl.js
 js/LoginCtrl.js
 js/MenuCtrl.js
 js/editor.js
+js/javascript-lint-task.js
 js/javascript-lint.js
 js/persistence.js
 js/sandbox.js
