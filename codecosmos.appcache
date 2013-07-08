@@ -4,21 +4,20 @@ NETWORK:
 *
 
 
-# [res.local] Sun Jul 07 2013 09:18:58 GMT-0700 (PDT)
+# [res.local] Mon Jul 08 2013 07:00:40 GMT-0500 (CDT)
 CACHE:
 index.html
 sandbox.html
 css/editor.css
-data/01-formandcode.js
 data/basic-arc.js
-data/basic-drawing.js
 data/basic-ellipse.js
 data/basic-line.js
 data/basic-rect.js
 data/basic-text.js
 data/bootstrap.json
 data/formandcode-01.js
-data/strings.js
+data/formandcode-02.js
+data/formandcode-06.js
 img/280046main_CassAcomposite_bkg.jpg
 img/cc-icon.jpg
 img/hs-2009-05-a-full_bkg.jpg
