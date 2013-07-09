@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Mon Jul 08 2013 22:19:38 GMT-0500 (CDT)
+# [res.local] Tue Jul 09 2013 01:31:02 GMT-0500 (CDT)
 CACHE:
 index.html
 sandbox.html
@@ -12,8 +12,11 @@ css/editor.css
 data/basic-arc.js
 data/basic-ellipse.js
 data/basic-line.js
+data/basic-quad.js
 data/basic-rect.js
+data/basic-shape.js
 data/basic-text.js
+data/basic-triangle.js
 data/bootstrap.json
 data/formandcode-01.js
 data/formandcode-02.js
