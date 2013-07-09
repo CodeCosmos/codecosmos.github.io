@@ -4,13 +4,15 @@ NETWORK:
 *
 
 
-# [res.local] Tue Jul 09 2013 10:46:18 GMT-0500 (CDT)
+# [res.local] Tue Jul 09 2013 12:02:38 GMT-0500 (CDT)
 CACHE:
 index.html
 sandbox.html
 css/editor.css
 data/animation-mouse.js
+data/animation-random.js
 data/animation-time.js
+data/animation-trig.js
 data/basic-arc.js
 data/basic-ellipse.js
 data/basic-line.js
