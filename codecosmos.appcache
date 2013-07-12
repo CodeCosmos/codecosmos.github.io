@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Tue Jul 09 2013 12:02:38 GMT-0500 (CDT)
+# [res.local] Thu Jul 11 2013 13:28:20 GMT-0500 (CDT)
 CACHE:
 index.html
 sandbox.html
@@ -25,6 +25,11 @@ data/bootstrap.json
 data/formandcode-01.js
 data/formandcode-02.js
 data/formandcode-06.js
+data/fractal-circle-1.js
+data/fractal-circle-2.js
+data/fractal-sierpinski.js
+data/fractal-tree.js
+data/physics-basketball.js
 img/280046main_CassAcomposite_bkg.jpg
 img/cc-icon.jpg
 img/hs-2009-05-a-full_bkg.jpg
