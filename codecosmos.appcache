@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Thu Jul 11 2013 13:28:20 GMT-0500 (CDT)
+# [res.local] Tue Jul 16 2013 12:24:34 GMT-0700 (PDT)
 CACHE:
 index.html
 sandbox.html
@@ -14,6 +14,7 @@ data/animation-random.js
 data/animation-time.js
 data/animation-trig.js
 data/basic-arc.js
+data/basic-bezier.js
 data/basic-ellipse.js
 data/basic-line.js
 data/basic-quad.js
@@ -121,3 +122,4 @@ static/ubuntu/stylesheet.css
 static/underscore/underscore.js
 static/verlet-js/verlet-1.0.0.js
 static/verlet-js/verlet-1.0.0.min.js
+tci2013/follow-up-email.html
