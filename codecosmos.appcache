@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Tue Jul 16 2013 12:24:34 GMT-0700 (PDT)
+# [res.local] Wed Jan 22 2014 07:54:18 GMT-0800 (PST)
 CACHE:
 index.html
 sandbox.html
@@ -67,6 +67,7 @@ static/d3/d3.v3.min.js
 static/escodegen/escodegen.browser.js
 static/esprima/esprima.js
 static/estraverse/estraverse.js
+static/font-awesome/css/font-awesome-ie7.css
 static/font-awesome/css/font-awesome-ie7.min.css
 static/font-awesome/css/font-awesome.css
 static/font-awesome/css/font-awesome.min.css
@@ -75,6 +76,24 @@ static/font-awesome/font/fontawesome-webfont.eot
 static/font-awesome/font/fontawesome-webfont.svg
 static/font-awesome/font/fontawesome-webfont.ttf
 static/font-awesome/font/fontawesome-webfont.woff
+static/font-awesome/less/bootstrap.less
+static/font-awesome/less/core.less
+static/font-awesome/less/extras.less
+static/font-awesome/less/font-awesome-ie7.less
+static/font-awesome/less/font-awesome.less
+static/font-awesome/less/icons.less
+static/font-awesome/less/mixins.less
+static/font-awesome/less/path.less
+static/font-awesome/less/variables.less
+static/font-awesome/scss/_bootstrap.scss
+static/font-awesome/scss/_core.scss
+static/font-awesome/scss/_extras.scss
+static/font-awesome/scss/_icons.scss
+static/font-awesome/scss/_mixins.scss
+static/font-awesome/scss/_path.scss
+static/font-awesome/scss/_variables.scss
+static/font-awesome/scss/font-awesome-ie7.scss
+static/font-awesome/scss/font-awesome.scss
 static/google-diff-match-patch/diff_match_patch.js
 static/google-diff-match-patch/diff_match_patch_uncompressed.js
 static/jquery/jquery.js
