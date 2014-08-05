@@ -4,7 +4,7 @@ NETWORK:
 *
 
 
-# [res.local] Wed Jan 22 2014 07:54:18 GMT-0800 (PST)
+# [eta.local] Mon Aug 04 2014 19:11:58 GMT-0700 (PDT)
 CACHE:
 index.html
 sandbox.html
@@ -35,6 +35,7 @@ img/280046main_CassAcomposite_bkg.jpg
 img/cc-icon.jpg
 img/hs-2009-05-a-full_bkg.jpg
 img/hs-2010-13-a-full_bkg.jpg
+img/rackspace-open-cloud.svg
 js/AppCtrl.js
 js/CodeCtrl.js
 js/LoginCtrl.js
